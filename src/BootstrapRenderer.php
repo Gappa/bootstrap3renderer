@@ -151,11 +151,12 @@ class BootstrapRenderer implements IExtendedFormRenderer
         $this->assertInForm();
 
         $el = clone $this->prototypes->getControlGroup();
+        $translator = $this->form->getTranslator();
 
         //group label
         $label = $group->getOption('label');
         if ($label) {
-            $this->addContent($el->getPlaceholder('label'), $label);
+            $this->addContent($el->getPlaceholder('label'), $translator->translate($label));
         } else {
             $el->removePlaceholder('label');
         }
@@ -163,7 +164,7 @@ class BootstrapRenderer implements IExtendedFormRenderer
         // group description
         $description = $group->getOption('description');
         if ($description) {
-            $this->addContent($el->getPlaceholder('description'), $description);
+            $this->addContent($el->getPlaceholder('description'), $translator->translate($description));
         } else {
             $el->removePlaceholder('description');
         }
